@@ -8,6 +8,7 @@
 
 - Run flask_app.py to analyze the data to find dips. The following code makes the app available on the local server via port 5000
 
-
+```
     export FLASK_APP=flask_app.py
     flask run --host=0.0.0.0
+```
