@@ -1,0 +1,5 @@
+.vscode/
+.last_dataset.json
+download_results.log
+ge_prices.db
+__pycache__/
