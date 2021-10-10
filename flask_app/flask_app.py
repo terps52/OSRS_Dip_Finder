@@ -61,7 +61,8 @@ def transform_data(data):
 
         item_data = {
             'id': int(group['id'].mode()),
-            'name': name
+            'name': name,
+            'timestamp': int(group['timestamp'].max())
         }
 
         low_avg = group['avgLowPrice'].mean()

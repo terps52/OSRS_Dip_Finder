@@ -14,7 +14,15 @@
                 <h1 class="text-center">Dip Finder</h1>
             </div>
             <div class="row">
-                <div class="col-sm-12" style="padding-left: 50px;">
+                <div class="col-sm-6">Data current as of: 
+                    <span id="updateTime"></span>
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-primary pull-right" onClick="window.location.reload();">Refresh</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="">
                     <table id="mainTable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
@@ -23,7 +31,6 @@
                                 <th>Diff (%)</th>
                                 <th>Recent Diff (%)</th>
                                 <th>Volume</th>
-                                <!-- <th>Id</th> -->
                             </tr>
                         </thead>
                         <tbody id="mainTableTbody"></tbody>

@@ -25,9 +25,11 @@ function render_data(data) {
     console.log(data['data'].length)
     console.log(data['data'])
 
+    // Declare datatable object
     var dataTable = $('#mainTable').DataTable({
         'paging': false,
         'order': [[3, 'desc']],
+        'searching': false,
         'columnDefs': [
             {
                 'render': function (data, type, row) {
@@ -39,9 +41,11 @@ function render_data(data) {
         ]
     });
 
+    // Iterate over data returned from API and populate rows in the datatable
     for (var i=0; i < data['data'].length; i++) {
         var ele = data['data'][i];
 
+        // display the highest value of each data field
         if (ele['high_min_max_diff_int'] > ele['low_min_max_diff_int']) {
             var min_max_margin = ele['high_min_max_diff_int'];
         } else {
@@ -76,6 +80,21 @@ function render_data(data) {
         ]).draw(false);
 
     }
+
+    // Update the time
+    var timestamp = data['data'][0]['timestamp'];
+    $('#updateTime').html(generateDateTime(timestamp));
 }
+
+
+function generateDateTime(timestamp) {
+    var dateObj = new Date(timestamp * 1000);
+    var date = dateObj.toLocaleDateString('en-US');
+    var time = dateObj.toLocaleTimeString("en-US");
+
+    return date + ' ' + time;
+}
+
+
 
 
