@@ -6,6 +6,8 @@ import pandas as pd
 
 app = Flask(__name__)
 
+DATABASE_PATH = '/usr/local/share/OSRS_Dip_Finder/database/ge_prices.db'
+
 @app.route('/get_data', methods=["GET"])
 def get_data():
 
@@ -28,7 +30,8 @@ def get_recent_data_from_db():
     # query from:
     # https://stackoverflow.com/questions/2129693/using-limit-within-group-by-to-get-n-results-per-group
 
-    conn = sqlite3.connect('../database/ge_prices.db')
+    #conn = sqlite3.connect('../database/ge_prices.db')
+    conn = sqlite3.connect(DATABASE_PATH)
 
     query_string = """SELECT p.timestamp, i.name, p.id, p.avgHighPrice, p.avgLowPrice, p.highPriceVolume, p.lowPriceVolume
         FROM (
@@ -133,4 +136,4 @@ def transform_data(data):
 
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
